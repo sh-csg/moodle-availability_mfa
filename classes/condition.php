@@ -63,11 +63,11 @@ class condition extends \core_availability\condition {
         $pluginenabled = get_config('tool_mfa', 'enabled');
         $usercontext = \context_user::instance($userid);
 
-        if (!empty($pluginenabled)&& has_capability('tool/mfa:mfaaccess', $usercontext)) {
+        if (!empty($pluginenabled) && has_capability('tool/mfa:mfaaccess', $usercontext)) {
             $enabledfactors = \tool_mfa\plugininfo\factor::get_enabled_factors();
             $result = count($enabledfactors) > 0;
         }
-        
+
         if ($not) {
             $result = !$result;
         }
